@@ -1,0 +1,171 @@
+openapi: 3.0.0
+info:
+  title: OpenAPI Tutorial
+  description: OpenAPI Tutorial by halhorn
+  version: 0.0.0
+servers:
+  - url: http://{host}:{port}/api
+    description: for development
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '5173'
+paths:
+  /matches:
+    get:
+      summary: returns matches
+      description: returns matches
+      parameters:
+        - name: dateFrom
+          in: query
+          description: start date
+          schema:
+            type: string
+        - name: dateTo
+          in: query
+          description: end date
+          schema:
+            type: string
+      responses:
+        '200':
+          description: succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matches'
+components:
+  schemas:
+    Matches:
+      type: object
+      required:
+        - matches
+      properties:
+        matches:
+          type: array
+          items:
+            $ref: '#/components/schemas/Match'
+    Match:
+      type: object
+      required:
+        - id
+        - name
+        - homeTeam
+        - awayTeam
+        - utcDate
+      properties:
+        id:
+          type: string
+        utcDate:
+          type: string
+          format: date
+        status:
+          type: string
+        matchday:
+          type: integer
+        stage:
+          type: string
+        group:
+          type: string
+        lastUpdated:
+          type: string
+        area:
+          $ref: '#/components/schemas/Area'
+        competition:
+          $ref: '#/components/schemas/Competition'
+        season:
+          $ref: '#/components/schemas/Season'
+        homeTeam:
+          $ref: '#/components/schemas/Team'
+        awayTeam:
+          $ref: '#/components/schemas/Team'
+        score:
+          $ref: '#/components/schemas/Score'
+        referees:
+          type: array
+          items:
+            type: string
+    Area:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        code:
+          type: string
+        flag:
+          type: string
+    Competition:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        code:
+          type: string
+        type:
+          type: string
+        emblem:
+          type: string
+    Season:
+      type: object
+      properties:
+        id:
+          type: integer
+        startDate:
+          type: string
+        endDate:
+          type: string
+        currrentMatchday:
+          type: integer
+        winner:
+          type: string
+    Team:
+      type: object
+      required:
+        - id
+        - name
+        - crest
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        shortName:
+          type: string
+        tla:
+          type: string
+        crest:
+          type: string
+    Score:
+      type: object
+      required:
+        - fullTime
+      properties:
+        winner:
+          type: string
+        duration:
+          type: string
+        fullTime:
+          type: object
+          properties:
+            home:
+              type: integer
+            away:
+              type: integer
+        halfTime:
+          type: object
+          properties:
+            home:
+              type: integer
+            away:
+              type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Auth-Token
+security:
+  - ApiKeyAuth: []
