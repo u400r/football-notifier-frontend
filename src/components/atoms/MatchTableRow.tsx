@@ -1,5 +1,8 @@
 import { css } from '@emotion/react';
-import { TableCell, TableRow, Typography } from '@mui/material';
+import liff from '@line/liff/dist/lib';
+import { NotificationsActive, NotificationsNone } from '@mui/icons-material';
+import { IconButton, TableCell, TableRow, Typography } from '@mui/material';
+import { useState } from 'react';
 import { Match } from '../../client';
 import { SvgInline } from './SvgInline';
 import { Team } from './Team';
@@ -18,8 +21,18 @@ interface MatchTableRowProps {
 }
 
 export default function MatchTableRow(props: MatchTableRowProps) {
+  const [isActive, setIsActive] = useState<boolean>(false);
   return (
     <TableRow key={props.match.id}>
+      {liff.isLoggedIn() ? (
+        <TableCell>
+          <IconButton onClick={() => setIsActive(!isActive)}>
+            {isActive ? <NotificationsActive /> : <NotificationsNone />}
+          </IconButton>
+        </TableCell>
+      ) : (
+        <></>
+      )}
       <TableCell>
         <SvgInline
           css={styles.inlineSvg}
