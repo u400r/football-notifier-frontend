@@ -4,6 +4,7 @@ import { NotificationsActive, NotificationsNone } from '@mui/icons-material';
 import { IconButton, TableCell, TableRow, Typography } from '@mui/material';
 import { useState } from 'react';
 import { Match } from '../../client';
+import { NotificationToggleButton } from './NotificationButton';
 import { SvgInline } from './SvgInline';
 import { Team } from './Team';
 const styles = {
@@ -21,14 +22,11 @@ interface MatchTableRowProps {
 }
 
 export default function MatchTableRow(props: MatchTableRowProps) {
-  const [isActive, setIsActive] = useState<boolean>(false);
   return (
     <TableRow key={props.match.id}>
       {liff.isLoggedIn() ? (
         <TableCell>
-          <IconButton onClick={() => setIsActive(!isActive)}>
-            {isActive ? <NotificationsActive /> : <NotificationsNone />}
-          </IconButton>
+          <NotificationToggleButton />
         </TableCell>
       ) : (
         <></>
