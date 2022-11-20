@@ -15,6 +15,7 @@
     "@line/liff": "^2.21.3",
     "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.14",
+    "dayjs": "^1.11.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

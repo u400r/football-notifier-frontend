@@ -34,9 +34,9 @@ export default function Header(props: HeaderProps) {
         });
       }
     });
-  });
+  }, []);
   return (
-    <AppBar position="absolute" sx={{ width: '100vx' }}>
+    <AppBar position="fixed" sx={{ width: '100vx' }}>
       <Toolbar>
         <IconButton
           size="large"

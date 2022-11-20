@@ -1,10 +1,10 @@
 import './App.css';
-import CommonLayout from './components/template/CommonLayout';
+import { MatchesPage } from './components/pages/MatchesPage';
 
 function App() {
   return (
     <div className="App">
-      <CommonLayout />
+      <MatchesPage />
     </div>
   );
 }

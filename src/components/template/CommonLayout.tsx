@@ -1,4 +1,5 @@
 import {
+  Box,
   Divider,
   Drawer,
   List,
@@ -7,10 +8,15 @@ import {
   ListItemText,
   Toolbar,
 } from '@mui/material';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Header from '../molecules/Header';
 
-export default function CommonLayout() {
+interface CommonLayoutProps {
+  children: React.ReactNode | undefined;
+}
+
+export default function CommonLayout(props: CommonLayoutProps) {
+  const { children } = props;
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const toggleDrawer = () => {
     setOpenDrawer(!openDrawer);
@@ -31,6 +37,7 @@ export default function CommonLayout() {
           ))}
         </List>
       </Drawer>
+      <Box sx={{ margin: '50px 0 0 0 ' }}>{children}</Box>
     </>
   );
 }
