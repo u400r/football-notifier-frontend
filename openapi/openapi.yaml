@@ -53,6 +53,7 @@ components:
         - homeTeam
         - awayTeam
         - utcDate
+        - competition
       properties:
         id:
           type: string
@@ -98,6 +99,8 @@ components:
           type: string
     Competition:
       type: object
+      required:
+        - id
       properties:
         id:
           type: integer
