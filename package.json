@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate": "npx openapi-generator-cli generate -g typescript-fetch -i openapi/openapi.yaml -o src/client"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
