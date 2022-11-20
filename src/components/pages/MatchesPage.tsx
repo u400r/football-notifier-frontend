@@ -32,9 +32,7 @@ export const MatchesPage = () => {
     for (let date = from; date.isBefore(to); date = date.add(1, 'day')) {
       dates.push(date);
     }
-    console.log(dates);
     const ret = dates.map((d) => {
-      console.log(d);
       return {
         date: d,
         matches: matches.matches.filter(
@@ -43,7 +41,6 @@ export const MatchesPage = () => {
         ),
       };
     });
-    console.log(ret);
     return ret;
   };
   return (
