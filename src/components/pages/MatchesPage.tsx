@@ -1,7 +1,7 @@
 import dayjs, { Dayjs } from 'dayjs';
 import { useEffect, useState } from 'react';
 import { Configuration, DefaultApi, Matches, Match } from '../../client';
-import MatchTableInCertainDay from '../atoms/MatchTable';
+import MatchTableInCertainDay from '../molecules/MatchTable';
 import CommonLayout from '../template/CommonLayout';
 
 const conf = new Configuration({ apiKey: '71fac00130684618a3012a0671cd06a7' });

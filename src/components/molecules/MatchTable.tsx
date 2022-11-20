@@ -1,7 +1,7 @@
 import { Dayjs } from 'dayjs';
 import { Box, Table, TableBody, Typography } from '@mui/material';
 import { Match } from '../../client';
-import MatchTableRow from './MatchTableRow';
+import MatchTableRow from '../atoms/MatchTableRow';
 
 interface MatchTableInCertainDayProps {
   date: Dayjs;
